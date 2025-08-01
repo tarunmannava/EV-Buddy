@@ -19,29 +19,20 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             EVBuddyTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
+                    EVBuddyApp(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun EVBuddyMainAppPreview() {
     EVBuddyTheme {
-        Greeting("Android")
+        EVBuddyApp()
     }
 }
+
