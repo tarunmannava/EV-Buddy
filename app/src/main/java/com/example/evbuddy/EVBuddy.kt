@@ -43,7 +43,7 @@ fun EVBuddyApp(modifier: Modifier = Modifier) {
                     }
                 },
                 onFindMobileDriver = {
-                    //currentScreen = AppScreen.DRIVERS
+                    currentScreen = AppScreen.DRIVERS
                 }
             )
         }

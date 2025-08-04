@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -49,7 +50,7 @@ fun ActionButtonsSection(
             icon = {
                 Row {
                     Icon(
-                        imageVector = Icons.Default.FlashOn,
+                        imageVector = Icons.Default.DirectionsCar,
                         contentDescription = null
                     )
                     Spacer(modifier = Modifier.width(8.dp))

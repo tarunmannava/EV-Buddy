@@ -1,6 +1,7 @@
 package com.example.evbuddy.ui.screens.home
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -131,15 +132,19 @@ fun DriverItem(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
                 )
             ) {
-                Icon(
-                    imageVector = Icons.Default.Person,
-                    contentDescription = "Driver profile",
-                    modifier = Modifier
-                        .size(40.dp)
-                        .padding(10.dp),
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer
-                )
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Person,
+                        contentDescription = "Driver profile",
+                        modifier = Modifier.size(24.dp), // Just set icon size
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
             }
+
 
             Spacer(modifier = Modifier.width(16.dp))
 
