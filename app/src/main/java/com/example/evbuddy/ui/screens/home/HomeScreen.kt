@@ -1,29 +1,70 @@
 package com.example.evbuddy.ui.screens.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.evbuddy.R
 import com.example.evbuddy.ui.components.BottomNavBar
 import com.example.evbuddy.ui.theme.EVBuddyTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    selectedTab: Int = 0,
+    onTabSelected: (Int) -> Unit = {},
+    onFindMobileDriver: () -> Unit = {},
+    modifier: Modifier = Modifier
+) {
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        // EV Buddy logo
+
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        Text(
+                            text = "EV Buddy – Charge On Demand",
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
+            )
+        },
         bottomBar = {
             BottomNavBar(
-                selectedTab = 0, // Home is selected
-                onTabSelected = { /* TODO: Handle tab selection */ }
+                selectedTab = selectedTab,
+                onTabSelected = onTabSelected
             )
         }
     ) { paddingValues ->
@@ -34,19 +75,12 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Header Section
-            Text(
-                text = "EV Buddy – Charge On Demand",
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(vertical = 24.dp)
-            )
-
             Spacer(modifier = Modifier.height(16.dp))
 
             // Action Buttons Section
-            ActionButtonsSection()
+            ActionButtonsSection(
+                onFindMobileDriver = onFindMobileDriver
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
 

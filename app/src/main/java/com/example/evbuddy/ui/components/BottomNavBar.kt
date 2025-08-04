@@ -5,13 +5,13 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.NavigationBar
-
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-
 
 @Composable
 fun BottomNavBar(
@@ -24,18 +24,28 @@ fun BottomNavBar(
         BottomNavItem("Profile", Icons.Default.Person)
     )
 
-    NavigationBar {
+    NavigationBar(
+        containerColor = Color(0xFF6366F1), // Purple background
+        contentColor = Color.White
+    ) {
         tabs.forEachIndexed { index, item ->
             NavigationBarItem(
-                icon= {
-                   Icon(
-                       imageVector = item.icon,
-                       contentDescription = item.title
-                   )
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = item.title
+                    )
                 },
-                label = {Text(item.title)},
-                selected = selectedTab ==index,
-                onClick = { onTabSelected(index) }
+                label = { Text(item.title) },
+                selected = selectedTab == index,
+                onClick = { onTabSelected(index) },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = Color.White,
+                    unselectedIconColor = Color.White.copy(alpha = 0.6f),
+                    selectedTextColor = Color.White,
+                    unselectedTextColor = Color.White.copy(alpha = 0.6f),
+                    indicatorColor = Color.White.copy(alpha = 0.2f)
+                )
             )
         }
     }
